@@ -1,20 +1,20 @@
 import json
 
-with open('1.json') as f:
-    t = json.load(f)
+with open('products.json') as f:
+    script = json.load(f)
 
-c = int(input("kol-vo: "))
+c = int(input("Количество добавляемого товара: "))
 p = {"products":[]}
 for i in range(c):
     name = input("Название: ")
     price = int(input("Цена: "))
     weight = int(input("Вес: "))
-    available = bool(input("В наличии - 1, не в наличии - 0: "))
+    available = bool(input("Наличие (Да - 1, Нет - 0): "))
     p['products'].append({"name":name,"price":price,"weight":weight,"available":available})
 
-t['products'].extend(p["products"])
-for i in t["products"]:
+script['products'].extend(p["products"])
+for i in script["products"]:
     print("Название: ", i["name"],"\n Цена: ", i["price"],"\n Вес: ", i["weight"],"\n В наличии" if i["available"] else "Нет в наличии!","\n")
 
-with open("1.json","r") as file:
-    json.dump(t, file, ensure_ascii=False, indent= None)
+with open("products.json","r") as file:
+    json.dump(script, file, ensure_ascii=False, indent= None)
